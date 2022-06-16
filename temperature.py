@@ -78,8 +78,8 @@ class AuotoWrite:
         try:
             response = r.post(url=self.url, params=self.param, headers=self.header)
             cookiesJAR = response.cookies  # 获取cookies
-            cookies = cookiesJAR.get_dict()  # 把cookies写成字典形式
-            res = r.get(url=self.url2, headers=self.header, cookies=cookies, params=self.param)
+            self.cookies = cookiesJAR.get_dict()  # 把cookies写成字典形式
+            res = r.get(url=self.url2, headers=self.header, cookies=self.cookies, params=self.param)
             print("登录成功")
         except:
             print("登录失败")
