@@ -93,7 +93,7 @@ class AuotoWrite:
         # 获取当前日期要填的文档的sid
         try:
             url4 = 'http://xscfw.hebust.edu.cn/survey/index.action'
-            rek = r.get(url=url4, cookies=cookies, headers=self.header)
+            rek = r.get(url=url4, cookies=self.cookies, headers=self.header)
             rek.encoding = 'utf-8'
             html3 = etree.HTML(rek.text)
             sid = html3.xpath('/html/body/ul/li[1]/@sid')[0]
@@ -103,7 +103,7 @@ class AuotoWrite:
         #####获取stuId和qid
         try:
             url5 = f'http://xscfw.hebust.edu.cn/survey/surveyEdit?id={sid}'
-            rej = r.get(url=url5, cookies=cookies, headers=self.header)
+            rej = r.get(url=url5, cookies=self.cookies, headers=self.header)
             rej.encoding = 'utf-8'
             html2 = etree.HTML(rej.text)
             stuId = html2.xpath('//*[@id="surveyForm"]/input[2]/@value')[0]
